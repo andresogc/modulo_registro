@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+     //Relacion one to many /  1 a muchos
+     public function userHobbies(){
+        return $this->hasMany('App\UserHobbies');
+    }
+
+
 }
