@@ -4,19 +4,25 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                <div class="card-header">
+                        {{Auth::user()->name}}
                 </div>
-            </div>
+
+            @foreach ($hobbies as $hobbie)
+                <div class="card">
+
+
+                        @if($hobbie->user_id == Auth::user()->id)
+                            <div class="card-body">
+
+                                    {{$hobbie->hobbie->name_hobbie}}
+
+                            </div>
+                        @endif
+
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

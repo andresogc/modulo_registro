@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class userAdmin_seed extends Seeder
 {
@@ -16,7 +17,7 @@ class userAdmin_seed extends Seeder
             'name'=> 'Admin',
             'username'=> 'admin',
             'email'=> 'admin@admin.com',
-            'password'=>'Administrador',
+            'password'=>bcrypt('Administrador'),
             'city'=> 'Bogotá',
             'profile'=> 'Administrador'
         ));

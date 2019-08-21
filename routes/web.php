@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/addHobbie', 'UserController@addHobbie')->name('addHobbie');
+Route::post('/addHobbie/save', 'UserController@hobbieSave')->name('hobbie.save');

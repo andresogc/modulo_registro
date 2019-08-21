@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    PASATIEMPOS
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -49,6 +49,17 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ Route('addHobbie')}}">Agregar pasatiempo favorito</a>
+                        </li>
+                          <!-- Si es un usuario administrador puede acceder a editar perfil y psatimepos de cualquier usuario -->
+                        @if(Auth::user()->profile == 'Administrador')
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Editar perfil de un usuario</a>
+                            </li>
+                        @endif
+
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
