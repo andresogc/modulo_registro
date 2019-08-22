@@ -5,8 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
+
+                @if (session('message'))
+                <div class="alert alert-success">
+
+                    {{ session('message')}}
+                </div>
+            @endif
+
+
                 <div class="card-header">
-                        {{Auth::user()->name}}
+                        MIS PASATIEMPOS
                 </div>
 
             @foreach ($hobbies as $hobbie)

@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -55,7 +57,7 @@
                           <!-- Si es un usuario administrador puede acceder a editar perfil y psatimepos de cualquier usuario -->
                         @if(Auth::user()->profile == 'Administrador')
                             <li class="nav-item">
-                                <a class="nav-link" href="">Editar perfil de un usuario</a>
+                                <a class="nav-link" href="{{route('user.find')}}">Editar perfil de un usuario</a>
                             </li>
                         @endif
 
@@ -66,11 +68,18 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->profile == 'Administrador')
+                                    <a class="dropdown-item" href="{{ route('user.edit') }}">                                       >
+                                           {{ __('editar mi cuenta') }}
+                                    </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -87,5 +96,8 @@
             @yield('content')
         </main>
     </div>
+
+
+
 </body>
 </html>
